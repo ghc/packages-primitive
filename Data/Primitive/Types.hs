@@ -34,6 +34,7 @@ import GHC.Int (
   )
 
 import GHC.Prim
+import GHC.PrimWrappers
 
 import Data.Typeable ( Typeable )
 import Data.Data ( Data(..) )

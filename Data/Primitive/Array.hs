@@ -106,7 +106,7 @@ unsafeThawArray (Array arr#)
 sameMutableArray :: MutableArray s a -> MutableArray s a -> Bool
 {-# INLINE sameMutableArray #-}
 sameMutableArray (MutableArray arr#) (MutableArray brr#)
-  = sameMutableArray# arr# brr#
+  = tagToEnum# (sameMutableArray# arr# brr#)
 
 -- | Copy a slice of an immutable array to a mutable array.
 copyArray :: PrimMonad m

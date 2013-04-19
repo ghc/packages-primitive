@@ -88,7 +88,7 @@ mutableByteArrayContents (MutableByteArray arr#)
 sameMutableByteArray :: MutableByteArray s -> MutableByteArray s -> Bool
 {-# INLINE sameMutableByteArray #-}
 sameMutableByteArray (MutableByteArray arr#) (MutableByteArray brr#)
-  = sameMutableByteArray# arr# brr#
+  = tagToEnum# (sameMutableByteArray# arr# brr#)
 
 -- | Convert a mutable byte array to an immutable one without copying. The
 -- array should not be modified after the conversion.
