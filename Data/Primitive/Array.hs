@@ -21,7 +21,7 @@ module Data.Primitive.Array (
 
 import Control.Monad.Primitive
 
-import GHC.Base  ( Int(..) )
+import GHC.Base  ( Int(..), isTrue# )
 import GHC.Prim
 
 import Data.Typeable ( Typeable )
@@ -106,7 +106,7 @@ unsafeThawArray (Array arr#)
 sameMutableArray :: MutableArray s a -> MutableArray s a -> Bool
 {-# INLINE sameMutableArray #-}
 sameMutableArray (MutableArray arr#) (MutableArray brr#)
-  = tagToEnum# (sameMutableArray# arr# brr#)
+  = isTrue# (sameMutableArray# arr# brr#)
 
 -- | Copy a slice of an immutable array to a mutable array.
 copyArray :: PrimMonad m

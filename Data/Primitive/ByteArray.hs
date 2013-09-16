@@ -31,7 +31,7 @@ import Data.Primitive.Types
 
 import Foreign.C.Types
 import Data.Word ( Word8 )
-import GHC.Base ( Int(..) )
+import GHC.Base ( Int(..), isTrue# )
 import GHC.Prim
 
 import Data.Typeable ( Typeable )
@@ -88,7 +88,7 @@ mutableByteArrayContents (MutableByteArray arr#)
 sameMutableByteArray :: MutableByteArray s -> MutableByteArray s -> Bool
 {-# INLINE sameMutableByteArray #-}
 sameMutableByteArray (MutableByteArray arr#) (MutableByteArray brr#)
-  = tagToEnum# (sameMutableByteArray# arr# brr#)
+  = isTrue# (sameMutableByteArray# arr# brr#)
 
 -- | Convert a mutable byte array to an immutable one without copying. The
 -- array should not be modified after the conversion.
